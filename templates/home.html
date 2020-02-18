@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+	{% extends "template.html" %}
+    {% block content %}
+    <h1> Console EMM </h1>
+    <p> BEIR EMM Gestion smartphones </p>
+	<form method ="post" action ="/">
+		<input type="submit" name="Inscription" value="Inscription">
+	{% endblock %}
+  </body>
+</html>
