@@ -12,13 +12,21 @@ def ListDevices():
 
 def DeleteDevices():
     #inscription.DeleteAllDevices()
-    inscription.DeleteDevices('enterprises/LC0430y1qm/devices/3b26e58aec3daf7f')
+    device = 'enterprises/LC0430y1qm/devices/36c701ca905b1f9b'
+    inscription.DeleteDevices(device)
 def ListPolitiques():
     inscription.AffListPolicies()
 
+def UpdatePolitique():
+    politique = '/policies/policy1'
+    inscription.UpdatePolitique(politique)
+
+def test():
+    inscription.UpdatePolitique()
+    
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    print(request.method)
+    print('Requete : ' + request.method)
     if request.method == 'POST':
         if request.form.get('Inscription') == 'Inscription':
             Inscription()
@@ -28,6 +36,10 @@ def home():
             ListPolitiques()
         elif request.form.get('Supprimer Devices') == 'Supprimer Devices':
             DeleteDevices()
+        elif request.form.get('Update Politique') == 'Update Politique':
+            UpdatePolitique()
+        elif request.form.get('test') == 'test':
+            test()
     return render_template("home.html")
     
 @app.route("/about")

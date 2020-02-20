@@ -56,13 +56,10 @@ def DeleteDevices(NomDevice):
     if androidmanagement:
         print('Authentication succeeded.')
     response = androidmanagement.enterprises().devices().delete(name = NomDevice).execute()
-    if response == 200:
+    if response:
         print('Suppression ok')
-    elif response == 404:
-        print('Pas de device portant ce nom : ' + NomDevice)
     else:
-        #print(response.to_json())
-        print('erreur?')
+        print('Pas de device portant ce nom : ' + NomDevice)
 
 #Méthode permettant de convertir un objet python en objet json
 def ObjetToJson(objet):
@@ -180,6 +177,74 @@ def InscriptionQR(NomPolitique):
     #print('result code : ' + str(url.getcode()))
     webbrowser.open_new(qrcode_url)
     
+#Méthode qui charge une(toutes?) politique depuis un fichier
+def ChargerPolitique():
+    print('Charger Politique')
+    with open('policies.json') as json_data:
+        data_dict = json.load(json_data)
+        return data_dict
+def UpdatePolitique():
+    # Paste your project ID here.
+    cloud_project_id = 'projettest-268014'
+    
+    #Create credentials
+    credentials = CreationCredits()
+    # Create the API client.
+    androidmanagement = build('androidmanagement', 'v1', credentials=credentials)
+    enterprise_name = 'enterprises/LC0430y1qm'
+    politique = ChargerPolitique()
+    policy_name = enterprise_name + politique['name']
+    politique_str = ObjetToJson(politique)
+    androidmanagement.enterprises().policies().patch(
+        name=policy_name,
+        body=json.loads(politique_str)
+    ).execute()
+#Méthode permettant de mettre à jour une politique
+# politique hardcodée dans le code => fichier chargé
+def UpdatePolitiqueTest(politique_name):
+    # Paste your project ID here.
+    cloud_project_id = 'projettest-268014'
+    
+    #Create credentials
+    credentials = CreationCredits()
+    # Create the API client.
+    androidmanagement = build('androidmanagement', 'v1', credentials=credentials)
+
+    print('Authentication succeeded.')
+    enterprise_name = 'enterprises/LC0430y1qm'
+
+    policy_name = enterprise_name + '/policies/policy1'
+
+    policy_json = '''
+    {
+      "applications": [
+        {
+          "packageName": "com.android.chrome",
+          "installType": "KIOSK",
+          "defaultPermissionPolicy": "PROMPT"
+        }
+      ],
+      "kioskCustomization": {
+          "powerButtonActions" : "POWER_BUTTON_BLOCKED",
+          "deviceSettings" : "SETTINGS_ACCESS_BLOCKED",
+          "statusBar": "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED",
+          "systemNavigation" : "NAVIGATION_ENABLED"
+        },
+      "systemUpdate": {
+          "type" : "AUTOMATIC"
+      },
+      "advancedSecurityOverrides": {
+          "untrustedAppsPolicy": "ALLOW_INSTALL_DEVICE_WIDE"
+      },
+      "debuggingFeaturesAllowed": true,
+      "bluetoothDisabled": true
+    }
+    '''
+    #Creation politique a partir du json
+    androidmanagement.enterprises().policies().patch(
+        name=policy_name,
+        body=json.loads(policy_json)
+    ).execute()
 #Méthode permettant d'inscrire les devices en utilisant un qr code
 def Inscription_QR() : 
     # Paste your project ID here.
@@ -205,10 +270,19 @@ def Inscription_QR() :
         }
       ],
       "kioskCustomization": {
-          "powerButtonActions" : "POWER_BUTTON_BLOCKED"
+          "powerButtonActions" : "POWER_BUTTON_BLOCKED",
+          "deviceSettings" : "SETTINGS_ACCESS_BLOCKED",
+          "statusBar": "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED",
+          "systemNavigation" : "NAVIGATION_ENABLED"
         },
+      "systemUpdate": {
+          "type" : "AUTOMATIC"
+      },
+      "advancedSecurityOverrides": {
+          "untrustedAppsPolicy": "ALLOW_INSTALL_DEVICE_WIDE"
+      },
       "debuggingFeaturesAllowed": true,
-      "adjustVolumeDisabled": true
+      "bluetoothDisabled": true
     }
     '''
     #Creation politique a partir du json
