@@ -1,4 +1,46 @@
-p {
-  color: red;
+.titre
+{
   text-align: center;
+  margin:150px auto0;
+  right:200px;
+  position: relative;
+  line-height:120px;
+}
+.soustitre
+{
+	text-align:center;
+	
+}
+p
+{
+	color:dark;
+	text-align:left;
+}
+.flottant
+{
+	float:left;
+	margin-right:100px;
+	margin-left:50px;
+}
+.menu
+{
+	background:black;
+	line-height:50px;
+	color:white;
+	text-align : center;
+}
+.menuElem
+{
+	margin:20px;
+	padding:20px;
+	padding-right: 40px;
+	border-right: 2px solid white;
+	color:white;
+}
+.menuElemFin
+{
+	margin:20px;
+	padding:20px;
+	padding-right: 40px;
+	color:white;
 }

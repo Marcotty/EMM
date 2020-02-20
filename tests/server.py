@@ -45,6 +45,18 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+@app.route("/inscription")
+def inscription():
+    return render_template("inscription.html")
+@app.route("/devices")
+def devices():
+    return render_template("devices.html")
+@app.route("/politiques")
+def politiques():
+    return render_template("politiques.html")
+@app.route("/entreprise")
+def entreprise():
+    return render_template("entreprise.html")
     
 if __name__ == "__main__":
     app.run(debug=True)

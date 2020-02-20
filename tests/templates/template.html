@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fr" dir="ltr">
  <head>
    <meta charset="utf-8">
    <title>Flask Parent Template</title>
-   <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
  </head>
  <body>
     <header>
       <div class="container">
-        <h1 class="logo">Menu</h1>
-        <strong><nav>
-          <ul class="menu">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-          </ul>
+		<p class = "flottant">
+		<img src="https://www.beirtelecom.com/wp-content/uploads/2015/01/Logo-BEIR2-e1421715734927.png"/>
+		</p>
+		<p>
+		<h1 class="titre" id="titreMenu" >Console   EMM</h1>
+		</p>
+        <strong><nav class= "menu">
+		  <a href="{{ url_for('home') }}" title="Page d'accueil" class= "menuElem">Home</a>
+		  <a href="{{ url_for('inscription') }}" title="Inscrire un appareil" class= "menuElem">Inscription</a>
+		  <a href="{{ url_for('devices') }}" title="Liste des appareils" class= "menuElem">Devices</a>
+		  <a href="{{ url_for('politiques') }}" title="Liste des politiques" class= "menuElem">Politiques</a>
+		  <a href="{{ url_for('entreprise') }}" title="Infos sur l'entreprise" class= "menuElem">Entreprise</a>
+		  <a href="{{ url_for('about') }}" title="A propos" class= "menuElemFin">About</a>
         </nav></strong>
       </div>
     </header>
