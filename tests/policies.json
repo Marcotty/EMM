@@ -1,0 +1,25 @@
+{
+	"name": "/policies/policy1",
+	"applications": [
+	{
+	  "packageName": "com.android.chrome",
+	  "installType": "KIOSK",
+	  "defaultPermissionPolicy": "PROMPT"
+	}
+	],
+	"kioskCustomization": {
+	  "powerButtonActions" : "POWER_BUTTON_BLOCKED",
+	  "deviceSettings" : "SETTINGS_ACCESS_BLOCKED",
+	  "statusBar": "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED",
+	  "systemNavigation" : "NAVIGATION_ENABLED"
+	},
+	"systemUpdate": {
+	  "type" : "AUTOMATIC"
+	},
+	"advancedSecurityOverrides": {
+	  "untrustedAppsPolicy": "ALLOW_INSTALL_DEVICE_WIDE"
+	},
+	"debuggingFeaturesAllowed": true,
+	"bluetoothDisabled": true,
+	"locationMode": "HIGH_ACCURACY"
+}
