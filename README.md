@@ -18,7 +18,7 @@ Prerequis
   - google_auth_oauthlib.flow import InstalledAppFlow   # Autorisations par défault (?)
   - urllib.parse import urlencode             # permet la création du qr_code
   
-  ++++ fichier dépendances
+  + fichier dépendances => importer les dépendances => py -m pip install -r requirements.txt
   
 Installation
   Télécharger l'archive, extraire dans un dossier, y placer le fichier contenant la clé du compte de service
