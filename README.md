@@ -20,7 +20,7 @@ Prerequis
   
   + fichier dépendances => importer les dépendances => py -m pip install -r requirements.txt
   
-Installation
+Installation\n
   Télécharger l'archive, extraire dans un dossier, y placer le fichier contenant la clé du compte de service
   Installer Python..
   Dans la console, lancer le serveur >py server.py
