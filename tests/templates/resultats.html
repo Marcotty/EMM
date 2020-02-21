@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>EMM Console</title>
+	</head>
+	<body>
+		{% extends "template.html" %}
+		{% block content %}
+		<h2 class="soustitre" id="titreInscription" >Inscription d'un appareil</h2>
+		<p>Inscription à : {{politique}} </p>
+		<div class ="separation"></div>
+		<img id="qr_code" src={{qr}}/>
+		{% endblock %}
+	</body>
+</html>

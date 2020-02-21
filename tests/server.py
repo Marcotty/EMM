@@ -1,28 +1,28 @@
 from flask import Flask, render_template, request
-import inscription
+import tools
 
 app = Flask(__name__)
 
 def Inscription():
     print('Inscription')
-    inscription.Inscription_QR()
+    tools.Inscription_QR()
    
 def ListDevices():
-    inscription.AffListDevices()
+    tools.AffListDevices()
 
 def DeleteDevices():
     #inscription.DeleteAllDevices()
-    device = 'enterprises/LC0430y1qm/devices/36c701ca905b1f9b'
-    inscription.DeleteDevices(device)
+    device = 'enterprises/LC0430y1qm/devices/3d0336d4fe96b3a9'
+    tools.DeleteDevices(device)
 def ListPolitiques():
-    inscription.AffListPolicies()
+    tools.AffListPolicies()
 
 def UpdatePolitique():
     politique = '/policies/policy1'
-    inscription.UpdatePolitique(politique)
+    tools.UpdatePolitique(politique)
 
 def test():
-    inscription.UpdatePolitique()
+    tools.UpdatePolitique()
     
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -47,16 +47,30 @@ def about():
     return render_template("about.html")
 @app.route("/inscription")
 def inscription():
-    return render_template("inscription.html")
+    pols = tools.ListPolicies()
+    #for pol in pols:
+        #pols_names += pol['name']
+    return render_template("inscription.html")#, politiques =pols_name)
 @app.route("/devices")
 def devices():
     return render_template("devices.html")
 @app.route("/politiques")
 def politiques():
+    pols = tools.ListPolicies()
+    #for pol in pols:
+     #   pol1_name = pol['name']
     return render_template("politiques.html")
+    
 @app.route("/entreprise")
 def entreprise():
     return render_template("entreprise.html")
+    
+@app.route('/resultats', methods = ['POST'])
+def resultats():
+    result = request.form
+    pol = result['politique']
+    #comment ajouter un nombre incertains de paramètres ??
+    return render_template("resultats.html", politique = pol, qr = tools.getQRLien())
     
 if __name__ == "__main__":
     app.run(debug=True)

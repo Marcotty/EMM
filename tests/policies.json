@@ -8,7 +8,7 @@
 	}
 	],
 	"kioskCustomization": {
-	  "powerButtonActions" : "POWER_BUTTON_BLOCKED",
+	  "powerButtonActions" : "POWER_BUTTON_AVAILABLE",
 	  "deviceSettings" : "SETTINGS_ACCESS_BLOCKED",
 	  "statusBar": "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED",
 	  "systemNavigation" : "NAVIGATION_ENABLED"

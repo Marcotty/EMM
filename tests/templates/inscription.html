@@ -7,7 +7,28 @@
   <body>
 	{% extends "template.html" %}
     {% block content %}
-	<h2 class="soustitre" id="titreInscription" >Inscription appareil</h2>
+	<h2 class="soustitre" id="titreInscription" >Inscription d'appareils</h2>
+	<form action="http://localhost:5000/resultats" method="post">
+		<div class = "separation"></div>
+		<div>
+			<label>Choix d'une politique : </label> 
+			<input list="politiques" name="politique" required>
+			<datalist id="politiques">
+				<!--{% for politique in politiques %}-->
+				<option value = {{politique}}>
+				<!--{%endfor %}-->
+			</datalist>
+			<input type = "submit" value ="Inscrire" />
+		</div>
+		<div class = "separation"></div>
+		<!-----
+		<div>
+			<label>Nouvelle politique</label>:
+			<input type="text" name="politique" />
+			<input type = "submit" value="Créer" />
+		</div>
+		---->
+	</form>
 	{% endblock %}
   </body>
 </html>

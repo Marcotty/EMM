@@ -7,24 +7,25 @@
  </head>
  <body>
     <header>
-      <div class="container">
+      <div class="header">
 		<p class = "flottant">
-		<img src="https://www.beirtelecom.com/wp-content/uploads/2015/01/Logo-BEIR2-e1421715734927.png"/>
+		<img id="logo" src="https://www.beirtelecom.com/wp-content/uploads/2015/01/Logo-BEIR2-e1421715734927.png"/>
 		</p>
 		<p>
-		<h1 class="titre" id="titreMenu" >Console   EMM</h1>
+		<h1 id="titrePrincipal" >Console   EMM</h1>
 		</p>
-        <strong><nav class= "menu">
-		  <a href="{{ url_for('home') }}" title="Page d'accueil" class= "menuElem">Home</a>
-		  <a href="{{ url_for('inscription') }}" title="Inscrire un appareil" class= "menuElem">Inscription</a>
-		  <a href="{{ url_for('devices') }}" title="Liste des appareils" class= "menuElem">Devices</a>
-		  <a href="{{ url_for('politiques') }}" title="Liste des politiques" class= "menuElem">Politiques</a>
-		  <a href="{{ url_for('entreprise') }}" title="Infos sur l'entreprise" class= "menuElem">Entreprise</a>
-		  <a href="{{ url_for('about') }}" title="A propos" class= "menuElemFin">About</a>
-        </nav></strong>
       </div>
     </header>
-    
+    <nav class= "menu">
+		<ul class="listMenu">
+		  <li><a href="{{ url_for('home') }}" title="Page d'accueil" class= "menuElem">Home</a></li>
+		  <li><a href="{{ url_for('inscription') }}" title="Inscrire un appareil" class= "menuElem">Inscription</a></li>
+		  <li><a href="{{ url_for('devices') }}" title="Liste des appareils" class= "menuElem">Devices</a></li>
+		  <li><a href="{{ url_for('politiques') }}" title="Liste des politiques" class= "menuElem">Politiques</a></li>
+		  <li><a href="{{ url_for('entreprise') }}" title="Infos sur l'entreprise" class= "menuElem">Entreprise</a></li>
+		  <li><a href="{{ url_for('about') }}" title="A propos" class= "menuElem">About</a></li>
+        </ul>
+	</nav>
     {% block content %}
     {% endblock %}
     
